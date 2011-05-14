@@ -1,0 +1,74 @@
+/**
+@mainpage Om libStartrail.
+
+@section secPublic Allmänt
+libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att testa att binda Lua mot C++. Men det finns en praktisk nytta bakom projektet om man gillar att "stacka" i hop en jävla massa bilder
+
+@subsection subsectDep Beroenden.
+  @li Magick++
+  @li Boost
+  @li Lua 5.1
+
+@subsection subsectNews Nytt:
+  @li Cmake.
+  @li Slagit i hop libstartrai och startrail (se ref @secBuild).
+  @li Anväder git för versionskontroll.
+  @li Flyttat till github.
+  @li Tog bort beroendet av GTest, då koden inte är testbar.
+
+@section secBuild Bygg.
+Det nya byggsystemet med cmake gör att man kan bygga både libstartrail och startrail, eller varje del för sig beroende på vad som önskas.
+  @li cmake ./
+  @li make (bygger både ./bin/startrail och ./lib/libstartrail)
+  @li make -C ./bin (bygger bara ./bin/startrail)
+  @li make -C ./lib (bygger bara ./lib/libstartrail)
+
+@section secUsage Anändning.
+
+@subsection subsectBin startrail.
+Startrail version 2.1.1 Generar en startrail bild utifrån en bildsammling.
+  @li ANVÄNDS: startrail <path_to_files/my_files.txt> <path_to_dest/out.jpg> my_files.txt ska innhålla en lista på bildernas filnamn.
+  @li ALT: startrail <fil_array> <path_to_dest/out.jpg>
+
+@subsection subsectLib libstartrail.
+I från lua kan man använda två funktioner, för närmare beskrivning se i ./demo.lua under exempel.
+  @li ComposeFromFile, funktionen tar textfil som argument, textfilen förväntas innehålla filnamnen på de filer som ska användas.
+  @li ComposeFromArray, funktionen tar en array med filnamn.
+
+@section sectRoadmap Roadmap.
+Allt som anges under roadmapen kommer inte att genomföras och vissa delar kommer att prioriteras annerlunda.
+
+@subsection subsect22 Version 2.2
+  @li Få bort alla todo.
+  @li Trådning.
+  @li Åter implementera boost progressbar för "stand alone" versionen
+  @li Annimerade gif.
+
+@subsection subsectFuture Framtiden.
+  @li Stopmotion med ffmpg eller liknande?
+
+@subsection subsectExperimential Experiment.
+  @li Testa att binda mot python?
+
+@section secLicens Licens
+libStartrail är släpt under GPL (se @ref page2)
+*/
+
+/**
+@page page2 Licens
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.\n\n
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.\n\n
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc.,59 Temple
+Place - Suite 330, Boston, MA  02111-1307, USA.  
+*/
+
+ 
