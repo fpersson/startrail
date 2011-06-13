@@ -3,7 +3,7 @@ include_directories(${CMAKEDEMO_SOURCE_DIR}../src)
 include_directories(${ImageMagick_INCLUDE_DIRS})
 include_directories(${LUA_INCLUDE_DIR})
 
-link_directories(${CMAKEDEMO_BINARY_DIR}../)
+link_directories(${CMAKEDEMO_BINARY_DIR}/)
 
 set(CORELIBS ${ImageMagick_LIBRARIES} ${LUA_LIBRARIES})
 
