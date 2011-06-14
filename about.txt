@@ -11,7 +11,7 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
 
 @subsection subsectNews Nytt:
   @li Cmake.
-  @li Slagit i hop libstartrai och startrail (se ref @secBuild).
+  @li Slagit i hop libstartrai och startrail (se @ref secBuild).
   @li Anväder git för versionskontroll.
   @li Flyttat till github.
   @li Tog bort beroendet av GTest, då koden inte är testbar.
@@ -29,6 +29,7 @@ Det nya byggsystemet med cmake gör att man kan bygga både libstartrail och sta
 Startrail version 2.1.1 Generar en startrail bild utifrån en bildsammling.
   @li ANVÄNDS: startrail <path_to_files/my_files.txt> <path_to_dest/out.jpg> my_files.txt ska innhålla en lista på bildernas filnamn.
   @li ALT: startrail <fil_array> <path_to_dest/out.jpg>
+  @li WIZARD: (se @ref page2)
 
 @subsection subsectLib libstartrail.
 I från lua kan man använda två funktioner, för närmare beskrivning se i ./demo.lua under exempel.
@@ -40,7 +41,7 @@ Allt som anges under roadmapen kommer inte att genomföras och vissa delar komme
 
 @subsection subsect22 Version 2.2
   @li Få bort alla todo.
-  @li Trådning.
+  @li Fixa till exifdata så det visar den stackade tiden tex 30s * 120frames, alternativ skrv ut en textfil med sådan info.
   @li Åter implementera boost progressbar för "stand alone" versionen
   @li Annimerade gif.
 
@@ -51,11 +52,21 @@ Allt som anges under roadmapen kommer inte att genomföras och vissa delar komme
   @li Testa att binda mot python?
 
 @section secLicens Licens
-libStartrail är släpt under GPL (se @ref page2)
+libStartrail är släpt under GPL (se @ref page3)
 */
 
 /**
-@page page2 Licens
+@page page2 Wizard
+@section secWizard Wizard.
+@subsection subsectInstall Installation
+chmod +x ./wizard.lua
+@subsection subsectUsage Användning
+./wizard.lua --gui | <path_to_files/my_files.txt> <path_to_dest/out.jpg> my_files.txt ska innhålla en lista på bildernas filnamn.
+@subsection subsectMisc Övrigt
+*/
+
+/**
+@page page3 Licens
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by 
 the Free Software Foundation; either version 2 of the License,
