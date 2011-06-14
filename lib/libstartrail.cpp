@@ -40,7 +40,13 @@ using namespace std;
 using namespace Magick;
 
 /**
+ * @fn static int ComposeFromFile(lua_State *L)
  * @brief Denna funktionen ska anropas om man vill lägga ihop filer från en textfil (configfil), argumenetan ska vara textfil, målfil. I från Lua ska denna anropas med ComposeFromFile
+ * @param *L lua_State
+ * @code
+ * --Lua syntax:
+ * libstartrail.ComposeFromFile("./images/test.txt", "./minbild.jpg")
+ * @endcode
  * @example demo.lua
  */
 static int ComposeFromFile(lua_State *L){
@@ -63,8 +69,15 @@ static int ComposeFromFile(lua_State *L){
 }
 
 /**
+ * @fn static int ComposeFromArray(lua_State *L)
  * @brief Denna funktionen ska anropas om man vill lägga ihop filer array, argumeneten skall vara array, målfil. I från Lua ska denna anropas med ComposeFromArray.
- * @example demo.lua
+ * @param *L lua_State
+
+ * @code
+ * --Lua syntax:
+ * array{"bild1.jpg", "bild2.jpg"}
+ * libstartrail.ComposeFromArray(array, "./minbild.jpg")
+ * @endcode
  */
 static int ComposeFromArray(lua_State *L){
   CImageComposer ic;

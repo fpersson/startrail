@@ -37,7 +37,6 @@ using namespace Magick;
  * @class CImageComposer 
  * @author Fredrik Persson <fpersson.se@gmail.com>
  * @brief CImageComposer, använder sig av magick++ för att slåihop flertalet bilder, med lighten.
- * @example /test/test.cpp
  * @todo skriv koden testbar
  */
 class CImageComposer

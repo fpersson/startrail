@@ -2,6 +2,11 @@
 --package.cpath = "./?.so; ./?.dll"
 require "libstartrail"
 
+--! @fn split(str, pat)
+--! @brief splitar upp en textsträng med önskat tecken.
+--! @param str textsträng
+--! @param pat tecken att splita vid
+--! @return array
 function split(str, pat)
    local t = {}
    local fpat = "(.-)" .. pat
@@ -21,7 +26,8 @@ function split(str, pat)
    return t
 end
 
---Jag använder kdialog
+--! @brief Skapar en öppna dialog som tillåter multipla val.
+--! @return array med filer
 function openFile()
   hnd, msg = io.popen('kdialog --multiple --getopenfilename . "*.jpg *.JPG *.tiff |jpg and tiff Files"','r') 
   if hnd then
@@ -33,7 +39,8 @@ function openFile()
   return t
 end
 
--- Välj savefil
+--! @brief Skapar en Sparasom dialog där användaren kan välja att spara jpg fil.
+--! @return filnamn med sökväg att spara som
 function saveAs()
   file = io.popen('kdialog --getsavefilename *.jpg "*.jpg *.JPG |jpg File"','r')
   retval = file:read("*a")
@@ -41,27 +48,21 @@ function saveAs()
   return retval
 end
 
--- en Notify när allt är färdigt.
+--! @brief Visar en notify när arbetet är utfört.
+--! @param str Meddelande att skriva i notify
 function notify(str)
   cmd = string.format("%s%s", 'kdialog --title "Färdigt" --passivepopup ', str)
   os.execute(cmd)
 end
 
--- main funktion för snyggare kod
-function main()
-  srcFiles = openFile()
-  destFile = saveAs()
-  libstartrail.ComposeFromArray(srcFiles, destFile)
-  notify(destFile)
-end
-
--- ska skriva hur wizarden ska annvändas.
+--! @brief Skriver hur wizarden ska annvändas.
 function printUsage()
   usageStr = "USAGE wizard.lua --gui | srcfiles.txt destfile.jpg"
   print(usageStr)
-  --notify(usageStr)
 end
 
+--! @brief huvudfunktionen.
+--! @param argv argument vektor med första argumentet som --gui om man vill köra i GUI läge annars srcfile.txt och destfile.jpg
 function main(argv)
   local nargs = table.getn(argv)
   if nargs == 1 then

@@ -23,6 +23,7 @@
 #include "CImageComposer.h"
 
 /**
+ * @fn CImageComposer::CImageComposer(const vector<string>& files)
  * @param files std::vector med std::string
  * @brief
  */
@@ -32,6 +33,7 @@ CImageComposer::CImageComposer(const vector<string>& files)
 }
 
 /**
+ * @fn int CImageComposer::Compose(const string& dest_file)
  * @param dest_file målfilen
  * @brief slår i hop bilderna LightenCompositeOp och skapar dest_file.
  * @todo Fixa till så att denna funktionen returerar ett enklelt felmeddelande om något går snett.

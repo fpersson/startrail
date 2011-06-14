@@ -22,7 +22,7 @@ Det nya byggsystemet med cmake gör att man kan bygga både libstartrail och sta
   @li make (bygger både ./bin/startrail och ./lib/libstartrail)
   @li make -C ./bin (bygger bara ./bin/startrail)
   @li make -C ./lib (bygger bara ./lib/libstartrail)
-  @li make doc skapar dokumentation från doxygen
+  @li make doc (skapar dokumentation från doxygen)
 
 @section secUsage Anändning.
 

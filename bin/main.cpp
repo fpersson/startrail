@@ -33,6 +33,12 @@
 using namespace std;
 using namespace Magick;
 
+/**
+ * @fn bool isTextFile(std::string str)
+ * @brief Kollar om en fil är textfil (kollar efter .txt)
+ * @param str
+ * @return true om det är en textfil som slutar på .txt annars false
+ */
 bool isTextFile(std::string str)
 {
 	size_t found_char;
@@ -45,15 +51,8 @@ bool isTextFile(std::string str)
 }
 
 /**
- * @brief experimentiell trådning
- */
-void splitedWork(std::vector<std::string>)
-{
-  /** @todo skriv kod här*/
-}
-
-/**
- * Stödjer även en lista med filer nu.
+ * @fn int main(int argc, char* argv[])
+ * @brief Huvudfunktionen för ./bin/startrail
  */
 int main(int argc, char* argv[])
 {
