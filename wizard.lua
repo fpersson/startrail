@@ -1,3 +1,4 @@
+#!/usr/bin/env lua
 --package.cpath = "./?.so; ./?.dll"
 require "libstartrail"
 
@@ -54,5 +55,31 @@ function main()
   notify(destFile)
 end
 
-main(...)
+-- ska skriva hur wizarden ska annvändas.
+function printUsage()
+  usageStr = "USAGE wizard.lua --gui | srcfiles.txt destfile.jpg"
+  print(usageStr)
+  --notify(usageStr)
+end
+
+function main(argv)
+  local nargs = table.getn(argv)
+  if nargs == 1 then
+    if argv[1] == "--gui" then
+      srcFiles = openFile()
+      destFile = saveAs()
+      libstartrail.ComposeFromArray(srcFiles, destFile)
+      notify(destFile)
+    else
+      printUsage()
+    end
+  elseif nargs == 2 then
+    libstartrail.ComposeFromFile(argv[1], argv[2])
+    print("Done...")
+  else
+    printUsage()
+  end
+end
+
+main(arg)
  
