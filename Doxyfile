@@ -612,11 +612,14 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = /home/fredrik/development/startrail/src \
+INPUT                  = INPUT \
+                         = \
+                         /home/fredrik/development/startrail/src \
                          /home/fredrik/development/startrail/bin \
                          /home/fredrik/development/startrail/lib \
                          /home/fredrik/development/startrail/about.txt \
-                         wizard.lua
+                         wizard.lua \
+                         INPUT
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 

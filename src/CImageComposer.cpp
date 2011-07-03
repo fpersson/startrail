@@ -46,8 +46,10 @@ int CImageComposer::Compose(const string& dest_file)
   for(i=file_list.begin()+1; i < file_list.end(); i++){
     layer.read(*i);
     base.composite(layer, 0,0 , LightenCompositeOp);
+    exif.count();
   }
   base.write(dest_file);
+  exif.updateExif(dest_file);
   return 0;
 }
 

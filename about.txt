@@ -8,13 +8,20 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Magick++
   @li Boost
   @li Lua 5.1
+  @li Exiv2
 
-@subsection subsectNews Nytt:
-  @li Cmake.
-  @li Slagit i hop libstartrai och startrail (se @ref secBuild).
-  @li Anväder git för versionskontroll.
-  @li Flyttat till github.
-  @li Tog bort beroendet av GTest, då koden inte är testbar.
+@subsection subsectNews Nytt 2.1.2: 
+Stödjer nu exif/iptc, manipulerar följande: 
+  @li Exif.Photo.ExposureTime
+  @li Exif.Image.ShutterSpeedValue
+  @li Exif.Photo.ShutterSpeedValue
+  @li Exif.Photo.UserComment
+  @li  Exif.Image.ProcessingSoftware
+  @li Exif.Image.Software
+  @li Iptc.Application2.Program
+  @li Iptc.Application2.ProgramVersion.
+
+Tidigare ändringar (se @ref page4)
 
 @section secBuild Bygg.
 Det nya byggsystemet med cmake gör att man kan bygga både libstartrail och startrail, eller varje del för sig beroende på vad som önskas.
@@ -83,4 +90,15 @@ this program; if not, write to the Free Software Foundation, Inc.,59 Temple
 Place - Suite 330, Boston, MA  02111-1307, USA.  
 */
 
- 
+/**
+@page page4 News
+
+@section sect OldNews Äldre nyheter.
+
+@subsection subsectNews Nytt 2.1.1:
+  @li Cmake.
+  @li Slagit i hop libstartrai och startrail (se @ref secBuild).
+  @li Anväder git för versionskontroll.
+  @li Flyttat till github.
+  @li Tog bort beroendet av GTest, då koden inte är testbar.
+*/

@@ -1,7 +1,10 @@
 cmake_minimum_required (VERSION 2.6)
 project(STARTRAIL)
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+
 find_package(ImageMagick COMPONENTS Magick++)
+find_package(Exiv2)
 find_package(Doxygen)
 
 if(DOXYGEN_FOUND)

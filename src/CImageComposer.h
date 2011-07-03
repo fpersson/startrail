@@ -28,7 +28,8 @@
 #include <cmath>
 #include <vector>
 #include <boost/progress.hpp>
-#include <Magick++.h>  
+#include <Magick++.h>
+#include "CExifHandler.h"
 
 using namespace std;
 using namespace Magick;
@@ -58,6 +59,7 @@ class CImageComposer
     ~CImageComposer(){};
   private:
     vector<string> file_list;
+    CExifHandler exif;
     Image base;
     Image layer;
 };

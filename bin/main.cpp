@@ -26,7 +26,6 @@
 #include <fstream>
 #include <Magick++.h> 
 #include <boost/algorithm/string.hpp>
-#include <boost/thread.hpp>
 #include "CImageComposer.h"
 #include "CCfgReader.h"
 
@@ -61,14 +60,7 @@ int main(int argc, char* argv[])
 		cout << "\nANVÄNDS: startrail <path_to_files/my_files.txt> <path_to_dest/out.jpg>" << endl;
 		cout << "         my_files.txt ska innhålla en lista på bildernas filnamn." << endl;
 		cout << "ALT: startrail <fil_array> <path_to_dest/out.jpg>." << endl;
-		cout << "ALT: startrail <fil_array> <path_to_dest/out.jpg><--treads=true>." << endl;
 		cout << "\nUpphovsman: Fredrik Persson <fpersson.se@gmail.com>\nLicens: GPL" << endl;
-	}else if(argc == 4){
-		if(argv[4] == "--treads=true"){
-		/**den trådade koden här.*/
-		}else{
-			cout << "Fuck you!!!" << endl;
-		}
 	}else{
 		CImageComposer my;
 		if(isTextFile(argv[1])){
