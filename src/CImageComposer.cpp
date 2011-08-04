@@ -35,7 +35,7 @@ CImageComposer::CImageComposer(const vector<string>& files)
 /**
  * @fn int CImageComposer::Compose(const string& dest_file)
  * @param dest_file målfilen
- * @brief slår i hop bilderna LightenCompositeOp och skapar dest_file.
+ * @brief slår i hop bilderna LightenCompositeOp och skapar dest_file, standalone versionen visar även en lite progressbar.
  * @todo Fixa till så att denna funktionen returerar ett enklelt felmeddelande om något går snett.
  */
 int CImageComposer::Compose(const string& dest_file)
@@ -43,10 +43,18 @@ int CImageComposer::Compose(const string& dest_file)
   base.read(file_list[0]);
   vector<string>::iterator i;
   string obj;
+#ifdef STAND_ALONE
+  int nImages = file_list.size();
+  cout << "Behandlar " << nImages << " filer. Vargod och vänta.\nDet ta ta några minuter, beroende på datamängd." << endl;
+  boost::progress_display display( nImages-1, std::cout ) ;
+#endif
   for(i=file_list.begin()+1; i < file_list.end(); i++){
     layer.read(*i);
     base.composite(layer, 0,0 , LightenCompositeOp);
     exif.count();
+#ifdef STAND_ALONE
+    ++display;
+#endif
   }
   base.write(dest_file);
   exif.updateExif(dest_file);

@@ -27,7 +27,11 @@
 #include <cstdlib>
 #include <cmath>
 #include <vector>
-#include <boost/progress.hpp>
+
+#ifdef STAND_ALONE
+  #include <boost/progress.hpp>
+#endif
+
 #include <Magick++.h>
 #include "CExifHandler.h"
 

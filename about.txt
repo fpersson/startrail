@@ -10,16 +10,8 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Lua 5.1
   @li Exiv2
 
-@subsection subsectNews Nytt 2.1.2: 
-Stödjer nu exif/iptc, manipulerar följande: 
-  @li Exif.Photo.ExposureTime
-  @li Exif.Image.ShutterSpeedValue
-  @li Exif.Photo.ShutterSpeedValue
-  @li Exif.Photo.UserComment
-  @li  Exif.Image.ProcessingSoftware
-  @li Exif.Image.Software
-  @li Iptc.Application2.Program
-  @li Iptc.Application2.ProgramVersion.
+@subsection subsectNews Nytt 2.1.3: 
+  @li Åter implementerat boost progressbar för "stand alone" versionen. 
 
 Tidigare ändringar (se @ref page4)
 
@@ -49,15 +41,10 @@ Allt som anges under roadmapen kommer inte att genomföras och vissa delar komme
 
 @subsection subsect22 Version 2.2
   @li Få bort alla todo.
-  @li Fixa till exifdata så det visar den stackade tiden tex 30s * 120frames, alternativ skrv ut en textfil med sådan info.
-  @li Åter implementera boost progressbar för "stand alone" versionen
   @li Annimerade gif.
 
 @subsection subsectFuture Framtiden.
   @li Stopmotion med ffmpg eller liknande?
-
-@subsection subsectExperimential Experiment.
-  @li Testa att binda mot python?
 
 @section secLicens Licens
 libStartrail är släpt under GPL (se @ref page3)
@@ -94,6 +81,17 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 @page page4 News
 
 @section sect OldNews Äldre nyheter.
+
+@subsection subsectNews Nytt 2.1.2: 
+Stödjer nu exif/iptc, manipulerar följande: 
+  @li Exif.Photo.ExposureTime
+  @li Exif.Image.ShutterSpeedValue
+  @li Exif.Photo.ShutterSpeedValue
+  @li Exif.Photo.UserComment
+  @li Exif.Image.ProcessingSoftware
+  @li Exif.Image.Software
+  @li Iptc.Application2.Program
+  @li Iptc.Application2.ProgramVersion.
 
 @subsection subsectNews Nytt 2.1.1:
   @li Cmake.
