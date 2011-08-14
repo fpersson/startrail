@@ -1,0 +1,6 @@
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+const std::string software_version("@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@");
+
+#endif 

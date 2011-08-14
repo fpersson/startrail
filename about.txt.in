@@ -1,5 +1,7 @@
 /**
-@mainpage Om libStartrail.
+@mainpage Om libStartrail ver @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@.
+
+@author fredrik persson<fpersson.se@gmail.com>
 
 @section secPublic Allmänt
 libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att testa att binda Lua mot C++. Men det finns en praktisk nytta bakom projektet om man gillar att "stacka" i hop en jävla massa bilder
@@ -10,8 +12,8 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Lua 5.1
   @li Exiv2
 
-@subsection subsectNews Nytt 2.1.3: 
-  @li Åter implementerat boost progressbar för "stand alone" versionen. 
+@subsection subsectNews Nytt @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@: 
+  @li Skrivit om input syntaxen, så nu använder man programmet: startrail --input-file=./minfil.txt --dest-file=./dest.jpg. 
 
 Tidigare ändringar (se @ref page4)
 
@@ -26,10 +28,15 @@ Det nya byggsystemet med cmake gör att man kan bygga både libstartrail och sta
 @section secUsage Anändning.
 
 @subsection subsectBin startrail.
-Startrail version 2.1.1 Generar en startrail bild utifrån en bildsammling.
-  @li ANVÄNDS: startrail <path_to_files/my_files.txt> <path_to_dest/out.jpg> my_files.txt ska innhålla en lista på bildernas filnamn.
-  @li ALT: startrail <fil_array> <path_to_dest/out.jpg>
-  @li WIZARD: (se @ref page2)
+Startrail version 2.1.x Generar en startrail bild utifrån en bildsammling.\n\n
+
+Syntax: ./startrail --input-file=./images/test.txt --dest-file=./minbild.jpg
+
+Tillåta argument:
+  @li --help - Hjälp.
+  @li --version - skriver ut versionsnumer
+  @li --input-file arg - Anger en textfil med en lista av bildfiler.
+  @li --dest-file arg - Anger målfilen som jpg.
 
 @subsection subsectLib libstartrail.
 I från lua kan man använda två funktioner, för närmare beskrivning se i ./demo.lua under exempel.
@@ -81,6 +88,9 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 @page page4 News
 
 @section sect OldNews Äldre nyheter.
+
+@subsection subsectNews Nytt 2.1.3: 
+  @li Åter implementerat boost progressbar för "stand alone" versionen. 
 
 @subsection subsectNews Nytt 2.1.2: 
 Stödjer nu exif/iptc, manipulerar följande: 

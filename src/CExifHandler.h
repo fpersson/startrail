@@ -34,8 +34,9 @@
 #include <exiv2/image.hpp>
 #include <exiv2/exif.hpp>
 
+#include "config.h"
+
 const std::string SOFTWARE_NAME = "Startrail";
-const std::string VERSION = "2.1.2";
 
 /**
  * @class CExifHandler 

@@ -28,7 +28,7 @@ void CExifHandler::updateExif(std::string file){
 
   software.append(SOFTWARE_NAME);
   software.append(" ");
-  software.append(VERSION);
+  software.append(software_version);
   comment.append("Created with ");
   comment.append(software);
   
@@ -37,7 +37,7 @@ void CExifHandler::updateExif(std::string file){
   exifData["Exif.Image.Software"] = software;
   
   iptcData["Iptc.Application2.Program"] = SOFTWARE_NAME;
-  iptcData["Iptc.Application2.ProgramVersion"] = VERSION;
+  iptcData["Iptc.Application2.ProgramVersion"] = software_version;
   
   image->setExifData(exifData);
   image->setIptcData(iptcData);
