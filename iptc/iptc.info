@@ -1,0 +1,9 @@
+iptc4xmpCore
+{
+  CiAdrCity "Stad"
+  CiAdrCtry "Land"
+  CiAdrExtadr "Adress"
+  CiAdrPcode "Postnumer"
+  CiAdrEmailWork "e-post"
+  CiUrlWork "hemsida"
+}

@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with startrail; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 #include <iostream>
@@ -31,7 +31,7 @@
 #include <boost/program_options/variables_map.hpp>
 #include <boost/program_options/parsers.hpp>
 
-#include <Magick++.h> 
+#include <Magick++.h>
 
 #include "config.h"
 #include "CImageComposer.h"
@@ -80,23 +80,24 @@ int main(int argc, char* argv[]){
   printHelp = false;
   string srcFile;
   string destFile;
-  
-  boost::program_options::options_description desc("\nTillåta argument");
+
+  boost::program_options::options_description desc("\nTillåtna argument");
   desc.add_options()
     ("help", "Hjälp.")
     ("version", "skriver ut versionsnumer")
     ("input-file", boost::program_options::value<std::string>(), "Anger en textfil med en lista av bildfiler.")
-    ("dest-file", boost::program_options::value<std::string>(), "Anger målfilen som jpg");
-    
+    ("dest-file", boost::program_options::value<std::string>(), "Anger målfilen som jpg")
+    ("use-infofile", boost::program_options::value<std::string>(), "Ange vilken .info fil som ska användas");
+
   boost::program_options::variables_map vm;
   boost::program_options::store(boost::program_options::parse_command_line(argc, argv, desc), vm);
-  boost::program_options::notify(vm);    
+  boost::program_options::notify(vm);
 
   if (vm.count("help")) {
     printHelpOnce(desc);
     return 1;
   }
-  
+
   if(vm.count("version")){
     cout << "Startrail - ver: " << software_version << endl;
     return 1;
@@ -109,12 +110,19 @@ int main(int argc, char* argv[]){
     printHelpOnce(desc);
     return 1;
   }
-    
-  CImageComposer my;
+
   if(isTextFile(srcFile)){
     CConfigRead cfgRead(srcFile);
-    my.AddImages(cfgRead.GetFiles());
-    my.Compose(destFile);
+    if(vm.count("use-infofile")){
+      cout << vm["use-infofile"].as<std::string>() << std::endl;
+      CImageComposer my(vm["use-infofile"].as<std::string>());
+      my.AddImages(cfgRead.GetFiles());
+      my.Compose(destFile);
+    }else{
+      CImageComposer my;
+      my.AddImages(cfgRead.GetFiles());
+      my.Compose(destFile);
+    }
   }
 
   return 0;

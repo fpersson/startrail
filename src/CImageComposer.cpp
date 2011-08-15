@@ -16,21 +16,19 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with startrail; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
- 
+
 #include "CImageComposer.h"
 
-/**
- * @fn CImageComposer::CImageComposer(const vector<string>& files)
- * @param files std::vector med std::string
- * @brief
- */
-CImageComposer::CImageComposer(const vector<string>& files)
+CImageComposer::CImageComposer(const vector<string>& files) : file_list(files) {;}
+
+CImageComposer::CImageComposer(const string& exiffile)
 {
-  file_list=files;
+  m_exifHandle.setIptcInfoFile(exiffile);
 }
+
 
 /**
  * @fn int CImageComposer::Compose(const string& dest_file)
@@ -51,13 +49,13 @@ int CImageComposer::Compose(const string& dest_file)
   for(i=file_list.begin()+1; i < file_list.end(); i++){
     layer.read(*i);
     base.composite(layer, 0,0 , LightenCompositeOp);
-    exif.count();
+    m_exifHandle.count();
 #ifdef STAND_ALONE
     ++display;
 #endif
   }
   base.write(dest_file);
-  exif.updateExif(dest_file);
+  m_exifHandle.updateExif(dest_file);
   return 0;
 }
 

@@ -3,7 +3,7 @@ project(STARTRAIL)
 
 set (VERSION_MAJOR 2)
 set (VERSION_MINOR 1)
-set (VERSION_REALESE 4)
+set (VERSION_REALESE 5)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/config.h.in"

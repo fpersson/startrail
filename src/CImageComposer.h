@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with startrail; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -39,10 +39,11 @@ using namespace std;
 using namespace Magick;
 
 /**
- * @class CImageComposer 
+ * @class CImageComposer
  * @author Fredrik Persson <fpersson.se@gmail.com>
  * @brief CImageComposer, använder sig av magick++ för att slåihop flertalet bilder, med lighten.
  * @todo skriv koden testbar
+ * @todo implemetera ERR_CODE
  */
 class CImageComposer
 {
@@ -55,15 +56,46 @@ class CImageComposer
       /** Kunde inte skriva till målfilen */
       DESTFILE_ERROR
     };
+
+    /**
+     * @brief En tom construkter för senare bruk, bör ej användas.
+     */
     CImageComposer(){;}
+
+    /**
+     * @brief Konstrukter att använda i fall man inte vill ha utöka exifstöd
+     * @param files vektor bildfiler
+     */
     CImageComposer(const vector<string>& files);
+
+    /**
+     * @brief Konstrukter med stöd för utökad exif
+     * @param files vektor med bildfiler
+     * @param exiffile infofilen med exifdata.
+     */
+    CImageComposer(const string& exiffile);
+
+    /**
+     * @brief Slår samman bilderna till dest_file, vill man lägga till fler filer än de man skickar med konstruktorn måste man använda AddImages först innan man anropar Compose.
+     * @param dest_file namnet på den fill man vill spara allt till
+     */
     int Compose(const string& dest_file);
+
+    /**
+     * @brief Lägger till fler bilder i vektorn, funktionen måste användas innan man anropar Compose
+     * @param newImages en vector innehållande en eller flera nya bilder.
+     */
     void AddImages(vector<string> newImages);
+
+    /**
+     * @brief rensar hela listan med bilder.
+     */
     void ClearImageList();
+
     ~CImageComposer(){};
   private:
     vector<string> file_list;
-    CExifHandler exif;
+    CExifHandler m_exifHandle;
     Image base;
     Image layer;
 };

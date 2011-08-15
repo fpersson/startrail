@@ -1,4 +1,4 @@
-find_package(Boost 1.4.2 COMPONENTS program_options REQUIRED)
+find_package(Boost 1.4.2 COMPONENTS program_options filesystem REQUIRED)
 include_directories(${CMAKEDEMO_SOURCE_DIR}../src)
 include_directories(${ImageMagick_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${Exiv2_INCLUDE_DIRS})
 
