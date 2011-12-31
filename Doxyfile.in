@@ -617,6 +617,7 @@ INPUT                  = INPUT \
                          @CMAKE_CURRENT_SOURCE_DIR@/src \
                          @CMAKE_CURRENT_SOURCE_DIR@/bin \
                          @CMAKE_CURRENT_SOURCE_DIR@/lib \
+                         @CMAKE_CURRENT_SOURCE_DIR@/python \
                          @CMAKE_CURRENT_SOURCE_DIR@/about.txt \
                          wizard.lua \
                          INPUT
@@ -717,7 +718,8 @@ EXAMPLE_PATH           = ./ \
 # blank all files are included.
 
 EXAMPLE_PATTERNS       = *.cpp \
-                         *.lua
+                         *.lua \
+                         *.py
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be 
 # searched for input files to be used with the \include or \dontinclude 

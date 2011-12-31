@@ -617,6 +617,7 @@ INPUT                  = INPUT \
                          /home/fredrik/development/startrail/src \
                          /home/fredrik/development/startrail/bin \
                          /home/fredrik/development/startrail/lib \
+                         /home/fredrik/development/startrail/python \
                          /home/fredrik/development/startrail/about.txt \
                          wizard.lua \
                          INPUT
@@ -717,7 +718,8 @@ EXAMPLE_PATH           = ./ \
 # blank all files are included.
 
 EXAMPLE_PATTERNS       = *.cpp \
-                         *.lua
+                         *.lua \
+                         *.py
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be 
 # searched for input files to be used with the \include or \dontinclude 

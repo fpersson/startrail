@@ -3,7 +3,7 @@ project(STARTRAIL)
 
 set (VERSION_MAJOR 2)
 set (VERSION_MINOR 1)
-set (VERSION_REALESE 5)
+set (VERSION_REALESE 6)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/config.h.in"
@@ -33,3 +33,4 @@ endif(DOXYGEN_FOUND)
 add_subdirectory(src)
 add_subdirectory(bin)
 add_subdirectory(lib)
+add_subdirectory(python)
