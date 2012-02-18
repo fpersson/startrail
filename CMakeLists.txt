@@ -3,7 +3,7 @@ project(STARTRAIL)
 
 set (VERSION_MAJOR 2)
 set (VERSION_MINOR 1)
-set (VERSION_REALESE 6)
+set (VERSION_REALESE 7)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/config.h.in"
@@ -22,6 +22,7 @@ find_package(Exiv2)
 find_package(Doxygen)
 find_package(Lua51)
 find_package(PythonLibs)
+find_package (GTest)
 
 if(DOXYGEN_FOUND)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
@@ -44,3 +45,8 @@ endif(LUA_FOUND)
 if(PYTHONLIBS_FOUND)
   add_subdirectory(python)
 endif(PYTHONLIBS_FOUND)
+
+#För att bygga unittesten om Gtest är installerat.
+if(GTEST_FOUND)
+  add_subdirectory(test)
+endif(GTEST_FOUND)

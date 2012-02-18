@@ -1,0 +1,13 @@
+doc/*
+doc
+*.so
+.directory
+.kdev*
+*~
+CMakeFiles
+Makefile
+*.kdev*
+*.cmake
+CMakeCache.txt
+bin/startrail
+test/demo_unittest

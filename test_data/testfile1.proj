@@ -1,0 +1,11 @@
+project
+{
+  api_version 1
+  destfile "./dir/test.jpg"
+  files
+  {
+    image "./test_data/f1.jpg"
+    image "./test_data/f2.jpg"
+    image "./test_data/f3.jpg"
+  }
+}

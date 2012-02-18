@@ -28,6 +28,7 @@
 #include <cmath>
 #include <vector>
 #include <fstream>
+#include "IReader.h"
 
 using namespace std;
 /**
@@ -38,35 +39,38 @@ using namespace std;
  * En beskrivning på hur klassen används.
  * @code
  * ///Sample 1.1
- * ConfigRead reader("./myfile.txt");
- * std::vector<std::string> myVector = reader.GetFiles();
+ * CConfigRead reader("./test_data/testfile1.txt");
+ * std::vector<std::string> res = reader.GetFiles();
  * @endcode
  */
-class CConfigRead
+class CConfigRead : public IReader
 {
-	public:
-		/**
-		 * @fn CConfigRead::CConfigRead(std::string cfg);
-		 * @brief
-		 * @param cfg
-		 */
-		CConfigRead(std::string cfg);
-		~CConfigRead();
-		/**
-		 * @fn std::vector<std::string> GetFiles(){return files;}
-		 * @return files as std::vector<std::string>
-		 */
-		std::vector<std::string> GetFiles(){return files;}
-	private:
-		std::vector<std::string>files;
-		/**
-		 * @fn std::string GetFolder(const string& cfg);
-		 * @brief skapar sökvägen till filerna genom att bryta ner sökvägen till konfigfilen, detta gör konfigfilen måste ligga i samma mapp som bilderna. Funktionen bör vara lätt att porta till alternativa plattformar tex windows.
-		 * @param cfg referens till configfilen
-		 * @return string som anger sökvägen till filens katalog.
-		 * @todo Ev skriva om funktionen så filen inte måste ligga i samma katalog som bilderna.
-		 */
-		std::string GetFolder(const std::string& cfg);
+  public:
+    /**
+     * @fn CConfigRead::CConfigRead(std::string cfg);
+     * @brief
+     * @param cfg
+     */
+    CConfigRead(std::string cfg);
+    virtual ~CConfigRead();
+    
+    virtual void ReadFile(std::string cfg);
+    
+    /**
+     * @fn std::vector<std::string> GetFiles(){return files;}
+     * @return files as std::vector<std::string>
+     */
+    virtual std::vector<std::string> GetFiles(){return files;}
+  private:
+    std::vector<std::string>files;
+    /**
+    * @fn std::string GetFolder(const string& cfg);
+    * @brief skapar sökvägen till filerna genom att bryta ner sökvägen till konfigfilen, detta gör konfigfilen måste ligga i samma mapp som bilderna. Funktionen bör vara lätt att porta till alternativa plattformar tex windows.
+    * @param cfg referens till configfilen
+    * @return string som anger sökvägen till filens katalog.
+    * @todo Ev skriva om funktionen så filen inte måste ligga i samma katalog som bilderna.
+    */
+    std::string GetFolder(const std::string& cfg);
 };
 
 #endif /* __CCfgReader_H__ */

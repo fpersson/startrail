@@ -1,5 +1,5 @@
 /**
-@mainpage Om libStartrail ver @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@.
+@mainpage Om libStartrail ver 2.1.7.
 
 @author fredrik persson<fpersson.se@gmail.com>
 
@@ -14,7 +14,7 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Python (och boost::python) (valbart)
   @li GTest (valbart)
 
-@subsection subsectNews Nytt @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@:
+@subsection subsectNews Nytt 2.1.7:
   @li Unittester med GTest
   @li Projektfiler baserade på boost::ptree (se @ref projectfile)
 
