@@ -6,7 +6,7 @@ add_definitions( -DSTAND_ALONE )
 
 link_directories(${CMAKEDEMO_BINARY_DIR}/)
 
-set(CORELIBS ${ImageMagick_LIBRARIES} ${LUA_LIBRARIES} ${Boost_LIBRARIES} ${Exiv2_LIBRARIES})
+set(CORELIBS ${ImageMagick_LIBRARIES} ${Boost_LIBRARIES} ${Exiv2_LIBRARIES})
 
 add_executable(startrail ${CORELIBS} main.cpp ../src/CImageComposer.cpp ../src/CCfgReader.cpp ../src/CExifHandler.cpp)
 target_link_libraries(startrail ${CORELIBS})

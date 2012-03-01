@@ -20,6 +20,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(ImageMagick COMPONENTS Magick++)
 find_package(Exiv2)
 find_package(Doxygen)
+find_package(Lua51)
+find_package(PythonLibs)
 
 if(DOXYGEN_FOUND)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
@@ -32,5 +34,13 @@ endif(DOXYGEN_FOUND)
 
 add_subdirectory(src)
 add_subdirectory(bin)
-add_subdirectory(lib)
-add_subdirectory(python)
+
+#om lua finns kan vi använda det
+if(LUA_FOUND)
+  add_subdirectory(lib)
+endif(LUA_FOUND)
+
+#om python finns kan vi använda det, borde även kolla boost::python...
+if(PYTHONLIBS_FOUND)
+  add_subdirectory(python)
+endif(PYTHONLIBS_FOUND)
