@@ -12,5 +12,5 @@ include_directories(${GTest_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 set(CORELIBS ${GTEST_BOTH_LIBRARIES} ${Boost_LIBRARIES})
 set(CMAKE_CXX_FLAGS "-pthread")
 
-add_executable(demo_unittest ${CORELIBS} unittest.cpp ../src/CCfgReader.cpp ../src/CProjReader.cpp)
+add_executable(demo_unittest ${CORELIBS} unittest.cpp ../src/CCfgReader.cpp ../src/CProjReader.cpp ../src/CProjWriter.cpp)
 target_link_libraries(demo_unittest ${CORELIBS})
