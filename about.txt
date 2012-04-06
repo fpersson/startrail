@@ -1,5 +1,5 @@
 /**
-@mainpage Om libStartrail ver 2.1.7.
+@mainpage Om libStartrail ver 2.2.0.
 
 @author fredrik persson<fpersson.se@gmail.com>
 
@@ -13,12 +13,14 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Lua 5.1 (valbart)
   @li Python (och boost::python) (valbart)
   @li GTest (valbart)
+  @li QT4 (valbart)
 
-@subsection subsectNews Nytt 2.1.7:
-  @li Unittester med GTest
-  @li Projektfiler baserade på boost::ptree (se @ref projectfile)
+@subsection subsectNews Nytt 2.2.0:
+  @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.
+  @li make -C ./qt_gui (NYTT bygger qtgui om qt är tillgängligt)
+  @li GTest är bortkommenterat i ./CMakeLists.txt pga ändringar i GTest (kommer troligen att uppdatera i cmake)
 
-Tidigare ändringar (se @ref page4)
+Tidigare ändringar (se @ref page5)
 
 @section secBuild Bygg.
 Det nya byggsystemet med cmake gör att man kan bygga både libstartrail (Lua/Python versioner) och startrail, eller varje del för sig beroende på vad som önskas.
@@ -28,12 +30,13 @@ Det nya byggsystemet med cmake gör att man kan bygga både libstartrail (Lua/Py
   @li make -C ./lib (bygger bara ./lib/libstartrail om lua är installerat)
   @li make -C ./python (bygger bara ./python/lib_pystartrail om python är installerat)
   @li make -C ./test (bygger unittester om gtest är installerat)
+  @li make -C ./qt_gui (bygger qtgui om qt är tillgängligt)
   @li make doc (skapar dokumentation från doxygen)
 
 @section secUsage Anändning.
 
 @subsection subsectBin startrail.
-Startrail version 2.1.x Generar en startrail bild utifrån en bildsammling.\n\n
+Startrail version 2.2.x Generar en startrail bild utifrån en bildsammling.\n\n
 
 Syntax: ./startrail --input-file=./images/test.txt --dest-file=./minbild.jpg
 
@@ -56,7 +59,7 @@ Bara för att experimentera portade jag libstartrail till Python också med hjä
 @section sectRoadmap Roadmap.
 Allt som anges under roadmapen kommer inte att genomföras och vissa delar kommer att prioriteras annerlunda.
 
-@subsection subsect22 Version 2.2
+@subsection subsect23 Version 2.3
   @li Få bort alla todo.
   @li Annimerade gif.
 
@@ -111,7 +114,16 @@ chmod +x ./wizard.lua
 */
 
 /**
-@page page3 Licens
+@page page3 Gui
+@section sectGui Gui.
+@subsection subsectionInstall Installation
+Ingen speciell installation än. Kör bara make -C ./qt_gui
+@subsection subsectionProjFiles Projektfilerna
+se @ref projectfile
+*/
+
+/**
+@page page4 Licens
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License,
@@ -128,9 +140,13 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 /**
-@page page4 News
+@page page5 News
 
 @section sect OldNews Äldre nyheter.
+
+@subsection subsectNews6 Nytt 2.1.7:
+  @li Unittester med GTest
+  @li Projektfiler baserade på boost::ptree (se @ref projectfile)
 
 @subsection subsectNews6 Nytt 2.1.6:
   @li Kan nu även bygga för python, med boost::python, libfilen blir 1.3MB stor jämfört med Lua versionen som blir ca 600kb

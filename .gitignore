@@ -7,7 +7,11 @@ doc
 CMakeFiles
 Makefile
 *.kdev*
-*.cmake
+cmake_install.cmake
 CMakeCache.txt
 bin/startrail
-test/demo_unittest
+test/demo_unittestqt_gui/sample
+ui_*.h
+moc*.cxx
+*.user
+*.cbp

@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 2.6)
 project(STARTRAIL)
 
 set (VERSION_MAJOR 2)
-set (VERSION_MINOR 1)
-set (VERSION_REALESE 7)
+set (VERSION_MINOR 2)
+set (VERSION_REALESE 0)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/config.h.in"
@@ -22,7 +22,8 @@ find_package(Exiv2)
 find_package(Doxygen)
 find_package(Lua51)
 find_package(PythonLibs)
-find_package (GTest)
+#find_package(GTest)
+find_package(Qt4)
 
 if(DOXYGEN_FOUND)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
@@ -39,14 +40,23 @@ add_subdirectory(bin)
 #om lua finns kan vi använda det
 if(LUA_FOUND)
   add_subdirectory(lib)
+  message("Lua [OK]")
 endif(LUA_FOUND)
 
 #om python finns kan vi använda det, borde även kolla boost::python...
 if(PYTHONLIBS_FOUND)
   add_subdirectory(python)
+  message("Python [OK]")
 endif(PYTHONLIBS_FOUND)
 
 #För att bygga unittesten om Gtest är installerat.
-if(GTEST_FOUND)
-  add_subdirectory(test)
-endif(GTEST_FOUND)
+#if(GTEST_FOUND)
+#  add_subdirectory(test)
+#  message("GTest [OK]")
+#endif(GTEST_FOUND)
+
+#för att bygga QT-GUI
+if(QT4_FOUND)
+   add_subdirectory(qt_gui)
+   message("QT4 [OK]")
+endif(QT4_FOUND)
