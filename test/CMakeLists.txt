@@ -4,13 +4,11 @@
 cmake_minimum_required (VERSION 2.6)
 project(demo)
 
-find_package (GTest REQUIRED)
-find_package(Boost 1.4.2 COMPONENTS program_options filesystem system REQUIRED)
+find_package(Boost 1.4.2 COMPONENTS program_options filesystem system filesystem unit_test_framework REQUIRED)
 
-include_directories(${GTest_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+include_directories(${Boost_INCLUDE_DIRS})
 
-set(CORELIBS ${GTEST_BOTH_LIBRARIES} ${Boost_LIBRARIES})
-set(CMAKE_CXX_FLAGS "-pthread")
+set(CORELIBS ${Boost_LIBRARIES})
 
 add_executable(demo_unittest ${CORELIBS} unittest.cpp ../src/CCfgReader.cpp ../src/CProjReader.cpp ../src/CProjWriter.cpp)
 target_link_libraries(demo_unittest ${CORELIBS})

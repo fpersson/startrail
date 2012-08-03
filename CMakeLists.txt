@@ -3,7 +3,7 @@ project(STARTRAIL)
 
 set (VERSION_MAJOR 2)
 set (VERSION_MINOR 2)
-set (VERSION_REALESE 0)
+set (VERSION_REALESE 1)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/config.h.in"
@@ -22,7 +22,6 @@ find_package(Exiv2)
 find_package(Doxygen)
 find_package(Lua51)
 find_package(PythonLibs)
-#find_package(GTest)
 find_package(Qt4)
 
 if(DOXYGEN_FOUND)
@@ -36,6 +35,7 @@ endif(DOXYGEN_FOUND)
 
 add_subdirectory(src)
 add_subdirectory(bin)
+add_subdirectory(test)
 
 #om lua finns kan vi använda det
 if(LUA_FOUND)
@@ -48,12 +48,6 @@ if(PYTHONLIBS_FOUND)
   add_subdirectory(python)
   message("Python [OK]")
 endif(PYTHONLIBS_FOUND)
-
-#För att bygga unittesten om Gtest är installerat.
-#if(GTEST_FOUND)
-#  add_subdirectory(test)
-#  message("GTest [OK]")
-#endif(GTEST_FOUND)
 
 #för att bygga QT-GUI
 if(QT4_FOUND)

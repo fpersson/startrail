@@ -12,13 +12,11 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Exiv2
   @li Lua 5.1 (valbart)
   @li Python (och boost::python) (valbart)
-  @li GTest (valbart)
   @li QT4 (valbart)
 
 @subsection subsectNews Nytt @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@:
+  @li GTest är nu ersatt med Boost Unittest Framework, då jag ändå har stora beroende av boost
   @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.
-  @li make -C ./qt_gui (NYTT bygger qtgui om qt är tillgängligt)
-  @li GTest är bortkommenterat i ./CMakeLists.txt pga ändringar i GTest (kommer troligen att uppdatera i cmake)
 
 Tidigare ändringar (se @ref page5)
 
@@ -29,7 +27,7 @@ Det nya byggsystemet med cmake gör att man kan bygga både libstartrail (Lua/Py
   @li make -C ./bin (bygger bara ./bin/startrail)
   @li make -C ./lib (bygger bara ./lib/libstartrail om lua är installerat)
   @li make -C ./python (bygger bara ./python/lib_pystartrail om python är installerat)
-  @li make -C ./test (bygger unittester om gtest är installerat)
+  @li make -C ./test (bygger unittester)
   @li make -C ./qt_gui (bygger qtgui om qt är tillgängligt)
   @li make doc (skapar dokumentation från doxygen)
 
@@ -50,11 +48,40 @@ Tillåta argument:
 @subsection subsectLib libstartrail.
 I från lua kan man använda två funktioner, för närmare beskrivning se i ./demo.lua under exempel.
   @li ComposeFromFile, funktionen tar textfil som argument, textfilen förväntas innehålla filnamnen på de filer som ska användas.
-  @li ComposeFromArray, funktionen tar en array med filnamn.
+  @li ComposeFromArray, funktionen tar en array med filnamn.\n\n
+  
+  @code
+    --package.cpath = "./?.so; ./?.dll"
+    require "libstartrail"
+
+    --Variant 1, med textfil som innehåller alla filerna som ska bearbetas.
+    libstartrail.ComposeFromFile("./images/test.txt", "./minbild.jpg")
+
+    --Variant 2, med en lista på alla filer som ska berabetas, 
+    --det är upp till användaren själv att fantisera ut hur listan ska skapas.
+
+    files = {"./images/IMG_3271.JPG",
+        "./images/IMG_3272.JPG",
+        "./images/IMG_3273.JPG",
+        "./images/IMG_3274.JPG",
+        "./images/IMG_3275.JPG",
+        "./images/IMG_3276.JPG"
+        }
+    libstartrail.ComposeFromArray(files, "./minbild_2.jpg")
+  @endcode
 
 @subsection subsectPyLib lib_pystartrail.
 Bara för att experimentera portade jag libstartrail till Python också med hjälp av boost::python
-  @li för info om hur libet ska användas se test.py
+  @li för info om hur libet ska användas se test.py\n\n
+  
+  @code
+    #!/usr/bin/python
+    import lib_pystartrail
+
+    ConfReader = lib_pystartrail.ConfigRead("./images/test.txt")
+    composer = lib_pystartrail.ImageComposer(ConfReader.GetFiles())
+    composer.Compose("./testing.jpg")
+  @endcode
 
 @section sectRoadmap Roadmap.
 Allt som anges under roadmapen kommer inte att genomföras och vissa delar kommer att prioriteras annerlunda.
@@ -87,7 +114,7 @@ iptc4xmpCore
 */
 
 /**
-  @page projectfile Projetfil
+  @page projectfile Projektfil
   Projektfilen kommer att användas av både standalone versionen samt QT versionen och tillåter mer avancerade inställningar än att använda enkel .txt
   @code
   project
@@ -142,9 +169,14 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 /**
 @page page5 News
 
-@section sect OldNews Äldre nyheter.
+@section sect OldNews Versionshistorik.
 
-@subsection subsectNews6 Nytt 2.1.7:
+@subsection subsectNews8 Nytt 2.2.0:
+  @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.
+  @li make -C ./qt_gui (NYTT bygger qtgui om qt är tillgängligt)
+  @li GTest är bortkommenterat i ./CMakeLists.txt pga ändringar i GTest (kommer troligen att uppdatera i cmake)
+
+@subsection subsectNews7 Nytt 2.1.7:
   @li Unittester med GTest
   @li Projektfiler baserade på boost::ptree (se @ref projectfile)
 
