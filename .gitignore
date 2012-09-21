@@ -11,6 +11,8 @@ cmake_install.cmake
 CMakeCache.txt
 bin/startrail
 test/demo_unittestqt_gui/sample
+qt_gui/sample
+test/demo_unittest
 ui_*.h
 moc*.cxx
 *.user

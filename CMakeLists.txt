@@ -38,10 +38,10 @@ add_subdirectory(bin)
 add_subdirectory(test)
 
 #om lua finns kan vi använda det
-if(LUA_FOUND)
+if(LUA51_FOUND)
   add_subdirectory(lib)
   message("Lua [OK]")
-endif(LUA_FOUND)
+endif(LUA51_FOUND)
 
 #om python finns kan vi använda det, borde även kolla boost::python...
 if(PYTHONLIBS_FOUND)
