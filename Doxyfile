@@ -618,7 +618,6 @@ INPUT                  = INPUT \
                          /home/fredrik/development/startrail/bin \
                          /home/fredrik/development/startrail/lib \
                          /home/fredrik/development/startrail/python \
-                         /home/fredrik/development/startrail/qt_gui \
                          /home/fredrik/development/startrail/about.txt \
                          wizard.lua \
                          INPUT

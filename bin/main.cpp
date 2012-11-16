@@ -24,6 +24,7 @@
 #include <cmath>
 #include <vector>
 #include <fstream>
+#include <set>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/program_options/option.hpp>
@@ -36,6 +37,8 @@
 #include "config.h"
 #include "CImageComposer.h"
 #include "CCfgReader.h"
+#include "CProjReader.h"
+#include "CFileLister.h"
 
 using namespace std;
 using namespace Magick;
@@ -67,7 +70,8 @@ void printHelpOnce(boost::program_options::options_description& d){
     cout << "Om:" << endl;
     cout << "Startrail version " << software_version << "\nGenerar en startrail bild utifrån en bildsammling."<< endl;
     cout << "Upphovsman: Fredrik Persson <fpersson.se@gmail.com>\nLicens: GPL" << endl;
-    cout << "\nSyntax: ./startrail --input-file=./images/test.txt --dest-file=./minbild.jpg\n" << endl;
+    cout << "\nSyntax: ./startrail --input-file=./images/test.txt --dest-file=./minbild.jpg\n ALT:" << endl;
+    cout << "\nSyntax: ./startrail --use-projectfile=./images/test.proj\n" << endl;
   }
   printHelp = true;
 }
@@ -77,6 +81,7 @@ void printHelpOnce(boost::program_options::options_description& d){
  * @brief Huvudfunktionen för ./bin/startrail
  */
 int main(int argc, char* argv[]){
+  CImageComposer my;
   printHelp = false;
   string srcFile;
   string destFile;
@@ -86,8 +91,9 @@ int main(int argc, char* argv[]){
     ("help", "Hjälp.")
     ("version", "skriver ut versionsnumer")
     ("input-file", boost::program_options::value<std::string>(), "Anger en textfil med en lista av bildfiler.")
+    ("input-dir", boost::program_options::value<std::string>(), "Läser in alla filerna i input-dir och slår samman dom.")
     ("dest-file", boost::program_options::value<std::string>(), "Anger målfilen som jpg")
-    ("use-infofile", boost::program_options::value<std::string>(), "Ange vilken .info fil som ska användas");
+    ("use-projectfile", boost::program_options::value<std::string>(), "Ange vilken .proj (projekt) fil som ska användas");
 
   boost::program_options::variables_map vm;
   boost::program_options::store(boost::program_options::parse_command_line(argc, argv, desc), vm);
@@ -106,24 +112,26 @@ int main(int argc, char* argv[]){
   if(vm.count("dest-file") && vm.count("input-file")){
     srcFile = vm["input-file"].as<std::string>();
     destFile = vm["dest-file"].as<std::string>();
+    if(isTextFile(srcFile)){
+      CConfigRead cfgRead(srcFile);
+      my.AddImages(cfgRead.GetFiles());
+      my.Compose(destFile);
+    }
+  }else if(vm.count("dest-file") && vm.count("input-dir")){
+    CFileLister FileList;
+    std::set<std::string> filter;
+    filter.insert(".jpg");
+    filter.insert(".JPG");
+    my.AddImages(FileList.listFiles(vm["input-dir"].as<std::string>(),filter));
+    my.Compose(vm["dest-file"].as<std::string>());    
+  }else if(vm.count("use-projectfile")){
+    cout << "project file: " << vm["use-projectfile"].as<std::string>() << std::endl;
+    CProjReader projReader(vm["use-projectfile"].as<std::string>());
+    my.AddImages(projReader.GetFiles());
+    my.Compose(projReader.getDestFile());
   }else{
     printHelpOnce(desc);
     return 1;
   }
-
-  if(isTextFile(srcFile)){
-    CConfigRead cfgRead(srcFile);
-    if(vm.count("use-infofile")){
-      cout << vm["use-infofile"].as<std::string>() << std::endl;
-      CImageComposer my(vm["use-infofile"].as<std::string>());
-      my.AddImages(cfgRead.GetFiles());
-      my.Compose(destFile);
-    }else{
-      CImageComposer my;
-      my.AddImages(cfgRead.GetFiles());
-      my.Compose(destFile);
-    }
-  }
-
   return 0;
 }

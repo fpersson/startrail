@@ -6,6 +6,7 @@
 #include "../src/CCfgReader.h"
 #include "../src/CProjReader.h"
 #include "../src/CProjWriter.h"
+#include "../src/CFileLister.h"
 
 BOOST_AUTO_TEST_CASE(ConfigReaderTest_inittest){
     CConfigRead reader("./test_data/testfile1.txt");
@@ -60,4 +61,26 @@ BOOST_AUTO_TEST_CASE(ProjectReader_WriteRead){
   if( remove(testfile.c_str()) != 0){
     std::cout << "Error: could not delete " << testfile << std::endl;
   }
+}
+
+BOOST_AUTO_TEST_CASE(CFileLister_inittest){
+  CFileLister FileLister;
+  std::set<std::string> filter;
+  filter.insert(".JPG");
+  filter.insert(".jpg");
+  std::vector<std::string> res = FileLister.listFiles("./test_data/", filter);
+  
+  BOOST_CHECK(res.empty() == false);
+  BOOST_CHECK(res.size() == 3); //validerar inte innehållet i testen då filerna kan listas i olika ordning beroende på system
+}
+
+BOOST_AUTO_TEST_CASE(CFileLister_failingtest){
+  CFileLister FileLister;
+  std::set<std::string> filter;
+  filter.insert(".exe");
+  filter.insert(".zip");
+  std::vector<std::string> res = FileLister.listFiles("./test_data/", filter);
+  
+  BOOST_CHECK(res.empty() == true);
+  BOOST_CHECK(res.size() == 0); //validerar inte innehållet i testen då filerna kan listas i olika ordning beroende på system
 }

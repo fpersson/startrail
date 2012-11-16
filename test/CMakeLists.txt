@@ -10,5 +10,5 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 set(CORELIBS ${Boost_LIBRARIES})
 
-add_executable(demo_unittest ${CORELIBS} unittest.cpp ../src/CCfgReader.cpp ../src/CProjReader.cpp ../src/CProjWriter.cpp)
+add_executable(demo_unittest ${CORELIBS} unittest.cpp ../src/CCfgReader.cpp ../src/CProjReader.cpp ../src/CProjWriter.cpp ../src/CFileLister.cpp)
 target_link_libraries(demo_unittest ${CORELIBS})

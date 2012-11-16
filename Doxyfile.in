@@ -618,7 +618,6 @@ INPUT                  = INPUT \
                          @CMAKE_CURRENT_SOURCE_DIR@/bin \
                          @CMAKE_CURRENT_SOURCE_DIR@/lib \
                          @CMAKE_CURRENT_SOURCE_DIR@/python \
-                         @CMAKE_CURRENT_SOURCE_DIR@/qt_gui \
                          @CMAKE_CURRENT_SOURCE_DIR@/about.txt \
                          wizard.lua \
                          INPUT

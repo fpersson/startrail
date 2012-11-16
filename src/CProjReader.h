@@ -42,13 +42,14 @@
  * @class CProjReader 
  * @author Fredrik Persson <fpersson.se@gmail.com>
  * @brief CProjReader Hanterar projektfiler som bygger på boost ptree format, 
- * projektfilerna ska i första hand användas av det grafiska gränssnittet i QT, men kan även importeras standalon versionen.
+ * projektfilerna ska i första hand användas av det grafiska gränssnittet i QT, men kan även importeras standalone versionen.
  * 
  * En beskrivning på hur klassen används.
  * @code
  * ///Sample 1.2
  * ConfigRead reader("./myfile.proj");
  * std::vector<std::string> myVector = reader.GetFiles();
+ * std::string destfile = reader.getDestFile();
  * @endcode
  */
 class CProjReader : public IReader{

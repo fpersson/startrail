@@ -1,7 +1,7 @@
 /**
 @mainpage Om libStartrail ver @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@.
 
-@author fredrik persson<fpersson.se@gmail.com>
+@author fredrik persson <fpersson.se@gmail.com>
 
 @section secPublic Allmänt
 libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att testa att binda Lua mot C++. Men det finns en praktisk nytta bakom projektet om man gillar att "stacka" i hop en jävla massa bilder
@@ -12,11 +12,11 @@ libStartrail är i huvudsak skrivit för mitt eget höga nöjesskull för att te
   @li Exiv2
   @li Lua 5.1 (valbart)
   @li Python (och boost::python) (valbart)
-  @li QT4 (valbart)
 
 @subsection subsectNews Nytt @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REALESE@:
-  @li GTest är nu ersatt med Boost Unittest Framework, då jag ändå har stora beroende av boost
-  @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.
+  @li Raderade QT beroenden och planerna på GUI
+  @li Bugfix i startrail, använder nu projekt filer korekt (se @ref projectfile)
+  @li Stöd för att använda alla filer i en katalog (filtrerars på .jpg och .JPG)
 
 Tidigare ändringar (se @ref page5)
 
@@ -41,9 +41,10 @@ Syntax: ./startrail --input-file=./images/test.txt --dest-file=./minbild.jpg
 Tillåta argument:
   @li --help - Hjälp.
   @li --version - skriver ut versionsnumer
-  @li --input-file arg - Anger en textfil med en lista av bildfiler.
-  @li --dest-file arg - Anger målfilen som jpg.
-  @li --use-infofile arg - ange
+  @li --input-file=/path/to/file - Anger en textfil med en lista av bildfiler.
+  @li --input-dir=/path/to/dir - läser in alla jpg filerna i katalogen och använder dom i bilden (alternativ till --input-file)
+  @li --dest-file=/path/to/file - Anger målfilen som jpg.
+  @li --use-projectfile=/path/to/file - ange sökvägen till proj filen, notera att man inte behöver ange målfil då detta angens i projektfilen (se @ref projectfile).
 
 @subsection subsectLib libstartrail.
 I från lua kan man använda två funktioner, för närmare beskrivning se i ./demo.lua under exempel.
@@ -115,16 +116,20 @@ iptc4xmpCore
 
 /**
   @page projectfile Projektfil
-  Projektfilen kommer att användas av både standalone versionen samt QT versionen och tillåter mer avancerade inställningar än att använda enkel .txt
+  Tillåter mer avancerade inställningar än att använda enkel .txt
   @code
   project
   {
-    api_version "0.1"
+    api_version 1
+    destfile "./minbild.jpg"
     files
     {
-      image "f1.jpg"
-      image "f2.jpg"
-      image "f3.jpg"
+      image "./images/IMG_3271.JPG"
+      image "./images/IMG_3272.JPG"
+      image "./images/IMG_3273.JPG"
+      image "./images/IMG_3274.JPG"
+      image "./images/IMG_3275.JPG"
+      image "./images/IMG_3276.JPG"
     }
   }
   @endcode
@@ -144,7 +149,7 @@ chmod +x ./wizard.lua
 @page page3 Gui
 @section sectGui Gui.
 @subsection subsectionInstall Installation
-Ingen speciell installation än. Kör bara make -C ./qt_gui
+Tagit bort planerna på GUI
 @subsection subsectionProjFiles Projektfilerna
 se @ref projectfile
 */
@@ -167,9 +172,13 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 /**
-@page page5 News
+@page page5 Versionshistorik
 
-@section sect OldNews Versionshistorik.
+@section sectVersions Versionshistorik.
+
+@subsection subsectNews9 Nytt 2.2.1:
+  @li GTest är nu ersatt med Boost Unittest Framework, då jag ändå har stora beroende av boost
+  @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.
 
 @subsection subsectNews8 Nytt 2.2.0:
   @li Qt gui versionen är inte 100% färdig än och innehåller en heldel kvar att göra, tex så låser sig guit medan processar bilderna.

@@ -54,6 +54,7 @@ private:
 };
 
 /**
+ * @class ImageComposer
  * @brief Adaptor klass för CImageCompser då boost::python inte hanterar stl::vector
  * @example test.py
  */

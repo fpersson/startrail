@@ -40,8 +40,8 @@ using namespace Magick;
 
 /**
  * @class CImageComposer
+ * @brief Använder sig av magick++ för att slåihop flertalet bilder, med lighten.
  * @author Fredrik Persson <fpersson.se@gmail.com>
- * @brief CImageComposer, använder sig av magick++ för att slåihop flertalet bilder, med lighten.
  * @todo skriv koden testbar
  * @todo implemetera ERR_CODE
  */

@@ -1,0 +1,14 @@
+project
+{
+  api_version 1
+  destfile "./minbild.jpg"
+  files
+  {
+    image "./images/IMG_3271.JPG"
+    image "./images/IMG_3272.JPG"
+    image "./images/IMG_3273.JPG"
+    image "./images/IMG_3274.JPG"
+    image "./images/IMG_3275.JPG"
+    image "./images/IMG_3276.JPG"
+  }
+}
