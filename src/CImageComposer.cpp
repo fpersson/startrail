@@ -22,9 +22,9 @@
 
 #include "CImageComposer.h"
 
-CImageComposer::CImageComposer(const vector<string>& files) : file_list(files) {;}
+CImageComposer::CImageComposer(const std::vector<std::string>& files) : file_list(files) {;}
 
-CImageComposer::CImageComposer(const string& exiffile)
+CImageComposer::CImageComposer(const std::string& exiffile)
 {
   m_exifHandle.setIptcInfoFile(exiffile);
 }
@@ -36,19 +36,19 @@ CImageComposer::CImageComposer(const string& exiffile)
  * @brief slår i hop bilderna LightenCompositeOp och skapar dest_file, standalone versionen visar även en lite progressbar.
  * @todo Fixa till så att denna funktionen returerar ett enklelt felmeddelande om något går snett.
  */
-int CImageComposer::Compose(const string& dest_file)
+int CImageComposer::Compose(const std::string& dest_file)
 {
   base.read(file_list[0]);
-  vector<string>::iterator i;
-  string obj;
+  std::vector<std::string>::iterator i;
+  std::string obj;
 #ifdef STAND_ALONE
   int nImages = file_list.size();
-  cout << "Behandlar " << nImages << " filer. Vargod och vänta.\nDet ta ta några minuter, beroende på datamängd." << endl;
+  std::cout << "Behandlar " << nImages << " filer. Vargod och vänta.\nDet ta ta några minuter, beroende på datamängd." << std::endl;
   boost::progress_display display( nImages-1, std::cout ) ;
 #endif
   for(i=file_list.begin()+1; i < file_list.end(); i++){
     layer.read(*i);
-    base.composite(layer, 0,0 , LightenCompositeOp);
+    base.composite(layer, 0,0 , Magick::LightenCompositeOp);
     m_exifHandle.count();
 #ifdef STAND_ALONE
     ++display;
@@ -63,9 +63,9 @@ int CImageComposer::Compose(const string& dest_file)
  *@brief Lägger till fler filer i listan
  *@param newImages Lista av bilder som ska läggas till.
  */
-void CImageComposer::AddImages(vector<string> newImages)
+void CImageComposer::AddImages(std::vector<std::string> newImages)
 {
-  vector<string>::iterator i;
+  std::vector<std::string>::iterator i;
   for(i=newImages.begin(); i < newImages.end(); i++){
     file_list.push_back(*i);
   }

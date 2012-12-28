@@ -30,7 +30,6 @@
 #include <fstream>
 #include "IReader.h"
 
-using namespace std;
 /**
  * @class CConfigRead 
  * @author Fredrik Persson <fpersson.se@gmail.com>

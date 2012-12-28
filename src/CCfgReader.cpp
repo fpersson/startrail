@@ -22,22 +22,20 @@
  
 #include "CCfgReader.h"
 
-CConfigRead::CConfigRead(string cfg)
-{
+CConfigRead::CConfigRead(std::string cfg){
   ReadFile(cfg);
 }
 
-CConfigRead::~CConfigRead()
-{
+CConfigRead::~CConfigRead(){
   //TODO: Skriv destruktor
 }
 
 void CConfigRead::ReadFile(std::string cfg){
   char* conf = (char*)cfg.c_str();
-  string str;
-  string path;
-  string strImage;
-  ifstream fin(conf);
+  std::string str;
+  std::string path;
+  std::string strImage;
+  std::ifstream fin(conf);
   if(!fin){
     //cout << "Kunde inte läsa: " << cfg << endl;
   }else{
@@ -51,7 +49,7 @@ void CConfigRead::ReadFile(std::string cfg){
   fin.close();
 }
 
-string CConfigRead::GetFolder(const string& cfg)
+std::string CConfigRead::GetFolder(const std::string& cfg)
 {
   size_t found_char;
   found_char = cfg.find_last_of("/\\");

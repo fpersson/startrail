@@ -35,9 +35,6 @@
 #include <Magick++.h>
 #include "CExifHandler.h"
 
-using namespace std;
-using namespace Magick;
-
 /**
  * @class CImageComposer
  * @brief Använder sig av magick++ för att slåihop flertalet bilder, med lighten.
@@ -66,26 +63,26 @@ class CImageComposer
      * @brief Konstrukter att använda i fall man inte vill ha utöka exifstöd
      * @param files vektor bildfiler
      */
-    CImageComposer(const vector<string>& files);
+    CImageComposer(const std::vector<std::string>& files);
 
     /**
      * @brief Konstrukter med stöd för utökad exif
      * @param files vektor med bildfiler
      * @param exiffile infofilen med exifdata.
      */
-    CImageComposer(const string& exiffile);
+    CImageComposer(const std::string& exiffile);
 
     /**
      * @brief Slår samman bilderna till dest_file, vill man lägga till fler filer än de man skickar med konstruktorn måste man använda AddImages först innan man anropar Compose.
      * @param dest_file namnet på den fill man vill spara allt till
      */
-    int Compose(const string& dest_file);
+    int Compose(const std::string& dest_file);
 
     /**
      * @brief Lägger till fler bilder i vektorn, funktionen måste användas innan man anropar Compose
      * @param newImages en vector innehållande en eller flera nya bilder.
      */
-    void AddImages(vector<string> newImages);
+    void AddImages(std::vector<std::string> newImages);
 
     /**
      * @brief rensar hela listan med bilder.
@@ -94,10 +91,10 @@ class CImageComposer
 
     ~CImageComposer(){};
   private:
-    vector<string> file_list;
+    std::vector<std::string> file_list;
     CExifHandler m_exifHandle;
-    Image base;
-    Image layer;
+    Magick::Image base;
+    Magick::Image layer;
 };
 
 #endif /* __CIMAGECOMPOSER_H__ */
