@@ -2,7 +2,7 @@
  * CCfgReader.cpp
  * This file is part of startrail
  *
- * Copyright (C) 2009 - Fredrik Persson
+ * Copyright (C) 2009 - Fredrik Persson <fpersson.se@gmail.com>
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ void CConfigRead::ReadFile(std::string cfg){
     path = GetFolder(cfg);
     while(!fin.eof()){
       fin >> str;
-      strImage = path+"/"+str;
+      strImage = path+'/'+str;
       files.push_back(strImage);
     }
   }
@@ -55,5 +55,3 @@ std::string CConfigRead::GetFolder(const std::string& cfg)
   found_char = cfg.find_last_of("/\\");
   return cfg.substr(0, found_char);
 }
-
- 

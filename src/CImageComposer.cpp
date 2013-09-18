@@ -2,7 +2,7 @@
  * CImageComposer.cpp
  * This file is part of startrail
  *
- * Copyright (C) 2009 - Fredrik Persson
+ * Copyright (C) 2009 - Fredrik Persson <fpersson.se@gmail.com>
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,13 +40,12 @@ int CImageComposer::Compose(const std::string& dest_file)
 {
   base.read(file_list[0]);
   std::vector<std::string>::iterator i;
-  std::string obj;
 #ifdef STAND_ALONE
   int nImages = file_list.size();
   std::cout << "Behandlar " << nImages << " filer. Vargod och vänta.\nDet ta ta några minuter, beroende på datamängd." << std::endl;
   boost::progress_display display( nImages-1, std::cout ) ;
 #endif
-  for(i=file_list.begin()+1; i < file_list.end(); i++){
+  for(i=file_list.begin()+1; i < file_list.end(); ++i){
     layer.read(*i);
     base.composite(layer, 0,0 , Magick::LightenCompositeOp);
     m_exifHandle.count();
@@ -66,7 +65,7 @@ int CImageComposer::Compose(const std::string& dest_file)
 void CImageComposer::AddImages(std::vector<std::string> newImages)
 {
   std::vector<std::string>::iterator i;
-  for(i=newImages.begin(); i < newImages.end(); i++){
+  for(i=newImages.begin(); i < newImages.end(); ++i){
     file_list.push_back(*i);
   }
 }

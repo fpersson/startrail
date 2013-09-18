@@ -2,7 +2,7 @@
  * main.cpp
  * This file is part of startrail
  *
- * Copyright (C) 2010 - Fredrik Persson
+ * Copyright (C) 2010 - Fredrik Persson <fpersson.se@gmail.com>
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 
 #include <Magick++.h>
 
-#include "config.h"
+#include <config.h>
 #include "CImageComposer.h"
 #include "CCfgReader.h"
 #include "CProjReader.h"

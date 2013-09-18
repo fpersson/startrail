@@ -2,7 +2,7 @@
  * libstartrail.cpp
  * This file is part of libstartrail
  *
- * Copyright (C) 2010 - Fredrik Persson
+ * Copyright (C) 2010 - Fredrik Persson <fpersson.se@gmail.com>
  *
  * libstartrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

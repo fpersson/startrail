@@ -2,7 +2,7 @@
  * CExifHandler.h
  * This file is part of startrail
  *
- * Copyright (C) 2011 - Fredrik Persson
+ * Copyright (C) 2011 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __CExifHandler_H__
-#define __CExifHandler_H__
+#ifndef CExifHandler_H
+#define CExifHandler_H
 
 #include <iostream>
 #include <cstdlib>
@@ -29,7 +29,7 @@
 #include <vector>
 #include <fstream>
 
-#include "boost/filesystem/operations.hpp"
+#include <boost/filesystem/operations.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/config.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -38,7 +38,7 @@
 #include <exiv2/image.hpp>
 #include <exiv2/exif.hpp>
 
-#include "config.h"
+#include <config.h>
 
 const std::string SOFTWARE_NAME = "Startrail";
 /**
@@ -68,12 +68,6 @@ struct iptc4xmpCore_t {
 class CExifHandler {
 public:
   CExifHandler();
-
-  /**
-   * @brief Sätter vilken exiffil som ska användas om sådan ska användas
-   * @param infoFile en boost .info
-   */
-  void setExifFile(const std::string infoFile);
 
   /**
    * @fn count()

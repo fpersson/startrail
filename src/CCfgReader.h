@@ -2,7 +2,7 @@
  * CCfgReader.h
  * This file is part of startrail
  *
- * Copyright (C) 2009 - Fredrik Persson
+ * Copyright (C) 2009 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
  
-#ifndef __CCfgReader_H__
-#define __CCfgReader_H__
+#ifndef CCfgReader_H
+#define CCfgReader_H
 
 #include <iostream>
 #include <cstdlib>
@@ -50,7 +50,7 @@ class CConfigRead : public IReader
      * @brief
      * @param cfg
      */
-    CConfigRead(std::string cfg);
+    explicit CConfigRead(std::string cfg);
     virtual ~CConfigRead();
     
     virtual void ReadFile(std::string cfg);

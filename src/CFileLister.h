@@ -2,7 +2,7 @@
  * CFileLister.h
  * This file is part of startrail
  *
- * Copyright (C) 2011 - Fredrik Persson
+ * Copyright (C) 2011 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __CFileLister_H__
-#define __CFileLister_H__
+#ifndef CFileLister_H
+#define CFileLister_H
 
 #include <iostream>
 #include <set>

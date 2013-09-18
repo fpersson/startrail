@@ -2,7 +2,7 @@
  * CProjReader.h
  * This file is part of startrail
  *
- * Copyright (C) 2011 - Fredrik Persson
+ * Copyright (C) 2011 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */ 
 
-#ifndef __CPROJREADER_H__
-#define __CPROJREADER_H__
+#ifndef CPROJREADER_H
+#define CPROJREADER_H
 
 #include <iostream>
 #include <cstdlib>
@@ -59,7 +59,7 @@ public:
    * @brief
    * @param cfg
    */
-  CProjReader(std::string cfg);
+  explicit CProjReader(std::string cfg);
   virtual ~CProjReader();
   
   virtual void ReadFile(std::string cfg);
@@ -92,6 +92,7 @@ private:
    * @param cfg referens till configfilen
    * @return string som anger sökvägen till filens katalog.
    * @todo Ev skriva om funktionen så filen inte måste ligga i samma katalog som bilderna.
+   * @note Används inte än.
    */
   std::string GetFolder(const std::string& cfg);
 };

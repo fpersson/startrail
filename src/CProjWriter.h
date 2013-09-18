@@ -2,7 +2,7 @@
  * CProjWriter.h
  * This file is part of startrail
  *
- * Copyright (C) 2012 - Fredrik Persson
+ * Copyright (C) 2012 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */  
 
-#ifndef __CPROJWRITER_H__
-#define __CPROJWRITER_H__
+#ifndef CPROJWRITER_H
+#define CPROJWRITER_H
 
 #include <iostream>
 #include <cstdlib>
@@ -67,6 +67,5 @@ public:
    */
   void Save(std::string projfile, std::string destfile, std::vector<std::string> files);
 };
-
 
 #endif

@@ -2,7 +2,7 @@
  * CImageComposer.h
  * This file is part of startrail
  *
- * Copyright (C) 2009 - Fredrik Persson
+ * Copyright (C) 2009 - Fredrik Persson email fpersson.se@gmail.com
  *
  * startrail is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __CIMAGECOMPOSER_H__
-#define __CIMAGECOMPOSER_H__
+#ifndef CIMAGECOMPOSER_H
+#define CIMAGECOMPOSER_H
 
 #include <iostream>
 #include <cstdlib>
@@ -47,7 +47,7 @@ class CImageComposer
   public:
     enum ERR_CODE{
       /** Standard som anger att allt gick rätt till */
-      SUCCED = 0,
+      SUCCEED = 0,
       /** Kunde inte läsa in filen*/
       INFILE_ERROR,
       /** Kunde inte skriva till målfilen */
@@ -63,14 +63,14 @@ class CImageComposer
      * @brief Konstrukter att använda i fall man inte vill ha utöka exifstöd
      * @param files vektor bildfiler
      */
-    CImageComposer(const std::vector<std::string>& files);
+    explicit CImageComposer(const std::vector<std::string>& files);
 
     /**
      * @brief Konstrukter med stöd för utökad exif
      * @param files vektor med bildfiler
      * @param exiffile infofilen med exifdata.
      */
-    CImageComposer(const std::string& exiffile);
+    explicit CImageComposer(const std::string& exiffile);
 
     /**
      * @brief Slår samman bilderna till dest_file, vill man lägga till fler filer än de man skickar med konstruktorn måste man använda AddImages först innan man anropar Compose.
